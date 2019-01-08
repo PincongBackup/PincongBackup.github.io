@@ -13,82 +13,79 @@ layout: default
     {% endif %}
 {% endfor %}
 
-<div class="container" id="content">
-    <div class="row">
-        <div class="col-xs-12 col-md-9">
-            <div id="post-details">
-                <span>
-                    <div class="hide-reason-wrapper">
-                        <div class="hide-reason ">
-                            状态: 问题池
-                        </div>
+<div class="row">
+    <div class="col-xs-12 col-md-9">
+        <div id="post-details">
+            <span>
+                <div class="hide-reason-wrapper">
+                    <div class="hide-reason ">
+                        状态: 问题池
+                    </div>
+                </div>
+
+                <div class="post-body-wrap post-body 问题池 post-body-wrap-103268 clearfix" style="margin-top: 5px;">
+                    <div class="tags clearfix" style="margin-bottom:0.5em;">
+                        {% for tag in page.tags %}
+                        <a class="tag" href="{{ site.baseurl }}/tags.html#{{ tag }}">
+                            {{ tag }}
+                        </a>
+                        {% endfor %}
                     </div>
 
-                    <div class="post-body-wrap post-body 问题池 post-body-wrap-103268 clearfix" style="margin-top: 5px;">
-                        <div class="tags clearfix" style="margin-bottom:0.5em;">
-                            {% for tag in page.tags %}
-                            <a class="tag" href="{{ site.baseurl }}/tags.html#{{ tag }}">
-                                {{ tag }}
-                            </a>
-                            {% endfor %}
-                        </div>
+                    <div class="post-title title" style="font-size: 19px !important; padding: 5px;">
+                        <span itemprop="name">{{ page.title }}</span>
+                    </div>
 
-                        <div class="post-title title" style="font-size: 19px !important; padding: 5px;">
-                            <span itemprop="name">{{ page.title }}</span>
-                        </div>
+                    <div>
+                        <div class="content post-content" style="margin-bottom: 2px;">
+                            
+                            <div class="post-mod-agree">
+                                {{ page.agree | default: 0 }}人赞同
+                            </div>
 
-                        <div>
-                            <div class="content post-content" style="margin-bottom: 2px;">
-                                
-                                <div class="post-mod-agree">
-                                    {{ page.agree | default: 0 }}人赞同
-                                </div>
-
-                                <div class="post-list-content">
-                                    <div class="post-text-wrap post-text-wrap-detail">
-                                        <div class="post-text post-text-detail">
-                                            {{ content }}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="clearfix">
-                                    <div class="post-action">
-                                        <div class="post-action-time">
-                                            <span class="userlink muted btn-gray">
-                                                <span class="btn-gray">
-                                                    {{ page.date | date: "%Y-%m-%d" }}
-                                                </span>
-                                            </span>
-                                        </div>
-
-                                        <span class="label label-default view-comment">
-                                            <span class="mainpost-cmt-count">
-                                                {{ page.comments | size | default: 0 }}
-                                            </span>
-                                            条评论
-                                        </span>
+                            <div class="post-list-content">
+                                <div class="post-text-wrap post-text-wrap-detail">
+                                    <div class="post-text post-text-detail">
+                                        {{ content }}
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="num_of_ans" style="padding: 10px; font-size: 16px; margin-top:50px;">
-                            {{ answersOfTheQuestion.size }}个回答
+
+                            <div class="clearfix">
+                                <div class="post-action">
+                                    <div class="post-action-time">
+                                        <span class="userlink muted btn-gray">
+                                            <span class="btn-gray">
+                                                {{ page.date | date: "%Y-%m-%d" }}
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <span class="label label-default view-comment">
+                                        <span class="mainpost-cmt-count">
+                                            {{ page.comments | size | default: 0 }}
+                                        </span>
+                                        条评论
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </span>
-
-                <div class="answers-wrap">
-                    {% include answers.html %}
+                    <div id="num_of_ans" style="padding: 10px; font-size: 16px; margin-top:50px;">
+                        {{ answersOfTheQuestion.size }}个回答
+                    </div>
                 </div>
+            </span>
 
+            <div class="answers-wrap">
+                {% include answers.html %}
             </div>
+
         </div>
-
-        {% include sidebar.html %}
-
     </div>
 
-    <script src="{{ site.baseurl }}/static/lib/prism/prism.js" type="text/javascript"></script>
+    {% include sidebar.html %}
 
 </div>
+
+<script src="{{ site.baseurl }}/static/lib/prism/prism.js" type="text/javascript"></script>
