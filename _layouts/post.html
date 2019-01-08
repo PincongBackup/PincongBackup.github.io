@@ -40,7 +40,9 @@ layout: default
                         <div class="content post-content" style="margin-bottom: 2px;">
                             
                             <div class="post-mod-agree">
-                                {{ page.agree | default: 0 }}人赞同
+                                <i class="fa fa-star-o fa-2x"></i>
+                                {{ page.upvote | default: 0 }}人赞同
+                                {{ page.follow | default: 0 }}人关注
                             </div>
 
                             <div class="post-list-content">
@@ -60,6 +62,22 @@ layout: default
                                             </span>
                                         </span>
                                     </div>
+
+                                    <span class="vote upvote mark btn-action fa fa-thumbs-o-up" title="赞同">
+                                        <span class="vote-btn-text zhidao-font">赞
+                                            <span class="count-wrap">
+                                                <span class="mainpost-count" style="font-size: 13px;">
+                                                    {{ page.upvote | default: 0 }}
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="vote downvote tip btn-action fa fa-thumbs-o-down" title="不赞同">
+                                        <span class="count-wrap zhidao-font">
+                                            {{ page.downvote }}
+                                        </span>
+                                    </span>
 
                                     <span class="label label-default view-comment">
                                         <span class="mainpost-cmt-count">

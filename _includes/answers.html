@@ -9,9 +9,15 @@
                         <div class="post-user-wrapper">
                             <span class="post-user-name">
                                 <a target="_blank" class="aw-user-name">
-                                    {{ answer.user_name }}
+                                    {{ answer.user_name | default: "品葱用户" }}
                                 </a>
                             </span>
+
+                            {% if answer.user_intro %}
+                            <span class="post-user-intro">
+                                &nbsp;| {{ answer.user_intro }}
+                            </span>
+                            {% endif %}
                         </div>
                         <span class="post-detail-user-box col-xs-3 col-md-2 box pull-right text-center">
                             <a>
@@ -20,7 +26,7 @@
                         </span>
                     </div>
                     <div class="post-mod-agree">
-                        {{ answer.agree | default: 0 }}人赞同
+                        {{ answer.upvote | default: 0 }}人赞同
                     </div>
                     <div class="post-list-content">
                         <div class="post-text-wrap post-text-wrap-detail">
