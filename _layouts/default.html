@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body class="body">
+
+    {% include nav.html %}
+
+    <div class="container" id="content">
+        {{ content }}
+    </div>
+
+    <div class="wrapper-footer">
+        <div class="container">
+
+            {% include github-corner.html %}
+
+            <footer class="footer">
+                {% include footer.html %}
+            </footer>
+        </div>
+    </div>
+
+</body>
+
+</html>
