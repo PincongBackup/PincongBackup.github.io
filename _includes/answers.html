@@ -7,6 +7,8 @@
                 <div class="content post-content" style="margin-bottom: 2px;">
                     <div class="post-mod-head">
                         <div class="post-user-wrapper">
+                            <i class="fa fa-star-o" style="font-size: 16px;margin-right: 5px;position: relative;top: 1px;color: #bcbcbc;"></i>
+
                             <span class="post-user-name">
                                 <a target="_blank" class="aw-user-name">
                                     {{ answer.user_name | default: "品葱用户" }}
@@ -41,7 +43,7 @@
                             <div class="post-action-time">
                                 <span class="userlink muted btn-gray">
                                     <span class="btn-gray">
-                                        {{ answer.date | date: "%Y-%m-%d" | default: page.date }}
+                                        {{ answer.date | default: page.date | date: "%Y-%m-%d" }}
                                     </span>
                                 </span>
                             </div>
