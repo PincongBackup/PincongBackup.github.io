@@ -37,15 +37,41 @@
                     </div>
 
                     <div class="clearfix">
-                        <div class="post-action" data="103731">
+                        <div class="post-action">
                             <div class="post-action-time">
                                 <span class="userlink muted btn-gray">
                                     <span class="btn-gray">
-                                        {{ answer.date | date: "%Y-%m-%d" }}
+                                        {{ answer.date | date: "%Y-%m-%d" | default: page.date }}
                                     </span>
                                 </span>
                             </div>
 
+                            <span class="vote upvote mark btn-action fa fa-thumbs-o-up" title="赞同">
+                                <span class="vote-btn-text zhidao-font">赞
+                                    <span class="count-wrap">
+                                        <span class="mainpost-count" style="font-size: 13px;">
+                                            {{ answer.upvote | default: 0 }}
+                                        </span>
+                                    </span>
+                                </span>
+                            </span>
+                            
+                            <span class="vote downvote tip btn-action fa fa-thumbs-o-down" title="不赞同">
+                                <span class="count-wrap zhidao-font">
+                                    {{ answer.downvote }}
+                                </span>
+                            </span>
+                            
+                            <span class="label label-default view-comment">
+                                <span class="mainpost-cmt-count">
+                                    {{ answer.comments | size | default: 0 }}
+                                </span>
+                                条评论
+                            </span>
+                            
+                            <span tabindex="0" class="btn-action post-action-group" style="cursor:pointer;margin-left:10px;">
+                                操作<span class="caret"></span>
+                            </span>
                         </div>
                     </div>
                 </div>

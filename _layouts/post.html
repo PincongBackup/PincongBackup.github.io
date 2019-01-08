@@ -40,7 +40,7 @@ layout: default
                         <div class="content post-content" style="margin-bottom: 2px;">
                             
                             <div class="post-mod-agree">
-                                <i class="fa fa-star-o fa-2x"></i>
+                                <i class="fa fa-star-o" style="font-size: 18px;margin-right: 0.5em;position: relative;top: 2px;"></i>
                                 {{ page.upvote | default: 0 }}人赞同
                                 {{ page.follow | default: 0 }}人关注
                             </div>
@@ -84,6 +84,10 @@ layout: default
                                             {{ page.comments | size | default: 0 }}
                                         </span>
                                         条评论
+                                    </span>
+
+                                    <span tabindex="0" class="btn-action post-action-group" style="cursor:pointer;margin-left:10px;">
+                                        操作<span class="caret"></span>
                                     </span>
                                 </div>
                             </div>
