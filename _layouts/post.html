@@ -1,3 +1,18 @@
+---
+layout: default
+---
+
+{% assign postURL = page.url | split: "/" %}
+{% assign postID = postURL[2] %}
+
+{% assign answersOfTheQuestion = "" | split: "," %}
+{% for answer in site.answers %}
+    {% assign answerURL = answer.url | split: "/" %}
+    {% if postID == answerURL[2] %}
+        {% assign answersOfTheQuestion = answersOfTheQuestion | push: answer %}
+    {% endif %}
+{% endfor %}
+
 <div class="container" id="content">
     <div class="row">
         <div class="col-xs-12 col-md-9">
@@ -26,11 +41,7 @@
                             <div class="content post-content" style="margin-bottom: 2px;">
                                 
                                 <div class="post-mod-agree">
-                                    {% if page.agree %}
-                                        {{ page.agree }}人赞同
-                                    {% else %}
-                                        0人赞同
-                                    {% endif %}
+                                    {{ page.agree | default: 0 }}人赞同
                                 </div>
 
                                 <div class="post-list-content">
@@ -53,11 +64,7 @@
 
                                         <span class="label label-default view-comment">
                                             <span class="mainpost-cmt-count">
-                                                {% if page.comments %}
-                                                    {{ page.comments | size }}
-                                                {% else %}
-                                                    0
-                                                {% endif %}
+                                                {{ page.comments | size | default: 0 }}
                                             </span>
                                             条评论
                                         </span>
@@ -66,7 +73,7 @@
                             </div>
                         </div>
                         <div id="num_of_ans" style="padding: 10px; font-size: 16px; margin-top:50px;">
-                            {{ page.answers | size }}个回答
+                            {{ answersOfTheQuestion.size }}个回答
                         </div>
                     </div>
                 </span>
