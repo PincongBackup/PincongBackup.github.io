@@ -25,11 +25,13 @@
                         <div>
                             <div class="content post-content" style="margin-bottom: 2px;">
                                 
-                                {% if page.agree %}
                                 <div class="post-mod-agree">
-                                    {{ page.agree }}人赞同
+                                    {% if page.agree %}
+                                        {{ page.agree }}人赞同
+                                    {% else %}
+                                        0人赞同
+                                    {% endif %}
                                 </div>
-                                {% endif %}
 
                                 <div class="post-list-content">
                                     <div class="post-text-wrap post-text-wrap-detail">

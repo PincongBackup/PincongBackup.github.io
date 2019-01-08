@@ -1,0 +1,54 @@
+{% for answer in page.answers %}
+
+<div class="post-answer-wrap">
+    <div class="post-body-wrap post-body normal post-body-wrap-103731 clearfix" style="margin-top: 5px;">
+
+        <div>
+            <div class="content post-content" style="margin-bottom: 2px;">
+                <div class="post-mod-head">
+                    <div class="post-user-wrapper">
+                        <span class="post-user-name">
+                            <a target="_blank" class="aw-user-name">
+                                {{ answer.user_name }}
+                            </a>
+                        </span>
+                    </div>
+                    <span class="post-detail-user-box col-xs-3 col-md-2 box pull-right text-center">
+                        <a>
+                            <img src="{{ site.baseurl }}/static/img/u-thumb-default.png" />
+                        </a>
+                    </span>
+                </div>
+                <div class="post-mod-agree">
+                    {% if answer.agree %}
+                        {{ answer.agree }}人赞同
+                    {% else %}
+                        0人赞同
+                    {% endif %}
+                </div>
+                <div class="post-list-content">
+                    <div class="post-text-wrap post-text-wrap-detail">
+                        <div class="post-text post-text-detail">
+                            {{ answer.content }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                    <div class="post-action" data="103731">
+                        <div class="post-action-time">
+                            <span class="userlink muted btn-gray">
+                                <span class="btn-gray">
+                                    {{ page.date | date: "%Y-%m-%d" }}
+                                </span>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
