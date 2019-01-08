@@ -23,11 +23,11 @@
                 {% for nav in site.navigation %}
                     <div class="col-sm-1 mid nav-item" style="top: -2px;">
                         {% if nav.url contains 'http://' or nav.url contains 'https://' %}
-                            <a href="{{ nav.url }}" style="position: relative; top: -4px;">
+                            <a href="{{ nav.url }}" style="position: relative; top: -5px;">
                                 {{ nav.name }}
                             </a>
                         {% else %}
-                            <a href="{{ site.baseurl }}{{ nav.url }}" style="position: relative; top: -4px;">
+                            <a href="{{ site.baseurl }}{{ nav.url }}" style="position: relative; top: -5px;">
                                 {{ nav.name }}
                             </a>
                         {% endif %}

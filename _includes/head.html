@@ -1,11 +1,11 @@
 <head>
-  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}{% if site.description %} – {{ site.description }}{% endif %}</title>
+  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
 
   {% include meta.html %}
 
   <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico">
 
-  <link rel="alternate" type="application/rss+xml" title="{{ site.name }}{% if site.description %} – {{ site.description }}{% endif %}" href="{{ site.baseurl }}/atom.xml" />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.baseurl }}/atom.xml" />
   <link rel="canonical" href="https://pincongbackup.github.io/" />
 
   <link rel="stylesheet" href="{{ site.baseurl }}/static/lib/bootstrap.3.3.7.min.css">
