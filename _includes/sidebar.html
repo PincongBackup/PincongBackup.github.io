@@ -22,16 +22,36 @@
         </div>
     </div>
 
+    <div class="user-detail-action-title btn-action">
+        相关问题 &raquo;
+    </div>
+
+    <div class="more-like-this">
+
+        {% comment %} TODO: 需要完善 {% endcomment %}
+        {% assign moreLikeItems = site.p | sample: 8 %}
+        
+        {% for post in moreLikeItems %}
+            <div class="more-like-item">
+                <a href="{{ site.baseurl }}{{post.url}}">
+                    {{post.title}}
+                </a>
+            </div>
+        {% endfor %}
+
+    </div>
+
     <div class="user-detail-right-action">
 
         <div class="user-detail-action-title btn-gray">
-            <a style="color: #999;">热门话题 &raquo;</a>
+            <a style="color: #999;" href="{{ site.baseurl }}/tags.html">热门话题 &raquo;</a>
         </div>
 
         <div class="user-detail-action-cnt">
             {% for tag in sortedTags limit:3 %}
                 <div class="user-detail-item">
                     <a class="tag" href="{{ site.baseurl }}/tags.html#{{ tag }}">{{ tag }}</a>
+                    <br />
 
                     {% assign postsOfTheTag = "" | split: "," %}
                     {% for post in site.p %}
@@ -75,7 +95,7 @@
         </a>
         &#9643; 
         <a class="btn-gray" target="_blank" href="https://github.com/PincongBackup/PincongBackup.github.io/#readme">
-            免翻墙访问品葱备份计划
+            免翻墙访问本站
         </a>
         &#9643; 
         <a class="btn-gray" target="_blank" href="https://github.com/PincongBackup/PincongBackup.github.io/issues">
