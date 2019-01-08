@@ -1,0 +1,43 @@
+
+{% comment %}按对应文章数量从大到小的顺序排序集合中的标签{% endcomment %}
+
+{% comment %}获取所有标签{% endcomment %}
+{% assign allTags = site.p | map: 'tags' | join: ','  | split: ',' | uniq %}
+
+{% comment %}获取每个标签对应的文章数量{% endcomment %}
+{% assign sizes = "" | split: "," %}
+{% for tag in allTags %}
+
+    {% assign size = 0 %}
+
+    {% for post in site.p %}
+        {% if post.tags contains tag %}
+            {% assign size = size | plus: 1 %}
+        {% endif %}
+    {% endfor %}
+
+    {% assign sizes = sizes | push: size %}
+
+{% endfor %}
+
+{% assign sizes = sizes | sort | reverse | uniq %}
+
+{% assign sortedTags = "" | split: "," %}
+
+{% for s in sizes %}
+    {% comment %}获取对应文章数量为s的全部标签{% endcomment %}
+    
+    {% for tag in allTags %}
+        {% assign size = 0 %}
+
+        {% for post in site.p %}
+            {% if post.tags contains tag %}
+                {% assign size = size | plus: 1 %}
+            {% endif %}
+        {% endfor %}
+
+        {% if size == s %}
+            {% assign sortedTags = sortedTags | push: tag %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
