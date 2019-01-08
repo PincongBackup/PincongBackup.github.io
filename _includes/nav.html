@@ -2,7 +2,7 @@
     <div class="nav_bar">
 
         <div class="row visible-sm visible-xs">
-            <div class="col-xs-4" style="width: 25%; height: 43px; padding: 0px;">
+            <div class="col-xs-4" style="width: 25%; height: 43px; padding: 0px; top: 2px; left: 5px;">
                 <a href="{{ site.baseurl }}/">
                     <img style="width:87px; height: 40px;" src="{{ site.baseurl }}/static/pc.logo.png">
                 </a>
@@ -12,24 +12,22 @@
         <div class="row visible-lg visible-md">
             <div class="col-md-12" id="navbar">
 
-                <a href="{{ site.baseurl }}/" class="col-lg-3 visible-lg" id="logo" style="background-image: url({{ site.baseurl }}/static/pc.logo.png); height: 100%;"></a>
+                <a href="{{ site.baseurl }}/" class="col-lg-3 visible-lg" id="logo" style="background-image: url({{ site.baseurl }}/static/pc.logo.png); height: 100%; top: -1px; margin-right: 1em;"></a>
 
                 <div class="col-md-3 visible-md text-center" style="width: 11%;">
                     <a href="{{ site.baseurl }}/">
-                        <a href="{{ site.baseurl }}/">
-                            <img style="width:90px; height: 40px;" src="{{ site.baseurl }}/static/pc.logo.png">
-                        </a>
+                        <img style="width:90px; height: 40px;" src="{{ site.baseurl }}/static/pc.logo.png">
                     </a>
                 </div>
 
                 {% for nav in site.navigation %}
-                    <div class="col-sm-1 mid nav-item">
+                    <div class="col-sm-1 mid nav-item" style="top: -2px;">
                         {% if nav.url contains 'http://' or nav.url contains 'https://' %}
-                            <a href="{{ nav.url }}">
+                            <a href="{{ nav.url }}" style="position: relative; top: -4px;">
                                 {{ nav.name }}
                             </a>
                         {% else %}
-                            <a href="{{ site.baseurl }}{{ nav.url }}">
+                            <a href="{{ site.baseurl }}{{ nav.url }}" style="position: relative; top: -4px;">
                                 {{ nav.name }}
                             </a>
                         {% endif %}
