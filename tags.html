@@ -1,0 +1,59 @@
+---
+layout: page
+title: 标签
+permalink: tags.html
+---
+
+{% include sort_tags.html %}
+
+{% assign postsOfTags = "" | split: "," %}
+{% for tag in sortedTags %}
+    {% assign postsOfTheTag = "" | split: "," %}
+
+    {% for post in site.p %}
+        {% if post.tags contains tag %}
+            {% assign postsOfTheTag = postsOfTheTag | push: post %}
+        {% endif %}
+    {% endfor %}
+
+    {% assign postsOfTags = postsOfTags | push: postsOfTheTag %}
+{% endfor %}
+
+<link rel="stylesheet/less" type="text/less" href="{{ site.baseurl }}/static/tags.less">
+
+<div class="tags-page tags-page-tags">
+    <ul class="tags-page-label">
+        {% for tag in sortedTags %}
+            {% assign index = forloop.index0 %}
+
+            <li>
+                <a href="#{{ tag }}">
+                    <span>{{ tag }}</span>
+                    <span class="count">{{ postsOfTags[index] | size }}</span>
+                </a>
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    {% for tag in sortedTags %}
+        {% assign index = forloop.index0 %}
+
+        <h2 id="{{ tag }}">
+            {{ tag }}
+        </h2>
+
+        <ul class="tags-page-tag-item">
+            {% for post in postsOfTags[index] reversed %}
+                {% if post.title != null %}
+                    <li>
+                        <a href="{{ site.baseurl }}{{ post.url }}">
+                            {{ post.title }}
+                        </a>
+                        <time>{{ post.date | date: "%Y-%m-%d" }}</time>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</div>
