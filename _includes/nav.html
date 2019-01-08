@@ -22,8 +22,8 @@
                     </a>
                 </div>
 
-                <div class="col-sm-1 mid nav-item">
-                    {% for nav in site.navigation %}
+                {% for nav in site.navigation %}
+                    <div class="col-sm-1 mid nav-item">
                         {% if nav.url contains 'http://' or nav.url contains 'https://' %}
                             <a href="{{ nav.url }}">
                                 {{ nav.name }}
@@ -33,8 +33,9 @@
                                 {{ nav.name }}
                             </a>
                         {% endif %}
-                    {% endfor %}
-                </div>
+                    </div>
+                {% endfor %}
+
             </div>
         </div>
 
