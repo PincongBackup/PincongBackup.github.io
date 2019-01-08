@@ -22,24 +22,27 @@
         </div>
     </div>
 
-    <div class="user-detail-action-title btn-action">
-        相关问题 &raquo;
-    </div>
+    {% comment %} 相关问题只在页面的layout为post时显示 {% endcomment %}
+    {% if page.layout == "post" %}
+        <div class="user-detail-action-title btn-action">
+            相关问题 &raquo;
+        </div>
 
-    <div class="more-like-this">
+        <div class="more-like-this">
 
-        {% comment %} TODO: 需要完善 {% endcomment %}
-        {% assign moreLikeItems = site.p | sample: 8 %}
-        
-        {% for post in moreLikeItems %}
-            <div class="more-like-item">
-                <a href="{{ site.baseurl }}{{post.url}}">
-                    {{post.title}}
-                </a>
-            </div>
-        {% endfor %}
+            {% comment %} TODO: 需要完善 {% endcomment %}
+            {% assign moreLikeItems = site.p | sample: 8 %}
+            
+            {% for post in moreLikeItems %}
+                <div class="more-like-item">
+                    <a href="{{ site.baseurl }}{{post.url}}">
+                        {{post.title}}
+                    </a>
+                </div>
+            {% endfor %}
 
-    </div>
+        </div>
+    {% endif %}
 
     <div class="user-detail-right-action">
 

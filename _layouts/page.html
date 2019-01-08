@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<style type="text/css">
+    blockquote p {
+        font-style: normal !important;
+        color: #333;
+        font-size: 13px;
+        font-weight: 500;
+        font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, WenQuanYi Micro Hei, Arial, sans-serif !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xs-12 col-md-9">
+        <div id="post-details">
+            <span>
+                <div class="article-entry">
+
+                    <div class="post-title title" style="font-size: 25px !important; padding: 5px;margin-top: 20px;">
+                        <span itemprop="name">{{ page.title }}</span>
+                    </div>
+
+                    <p>
+                        {{ content }}
+                    </p>
+
+                </div>
+            </span>
+        </div>
+    </div>
+
+    {% include sidebar.html %}
+
+</div>
+
+<script src="{{ site.baseurl }}/static/lib/prism/prism.js" type="text/javascript"></script>
