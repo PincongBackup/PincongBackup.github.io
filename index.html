@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+{% include translate_link.html %}
+
+<div class="row">
+    <div class="col-md-9">
+
+        <div class="row pagebar">
+            <div class="col-sm-3 " style="float:left;width: 15%;margin-top: 10px; display: none;">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" style="color: #999;">
+                        排序: 提问时间 <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a style="color: #999;">提问时间</a></li>
+                    </ul>
+                </div>
+            </div>
+            <span id="btn-post-answer-btm " class="btn btn-cancel pull-right desktop-only" style="display: none;">
+                <a style="color: #333;">
+                    <i class="fa fa-leaf" style="width: 22px;"></i>
+                    问题池
+                </a>
+            </span>
+        </div>
+
+        <div>
+            <span class="visible-sm visible-xs" style="margin: 20px 0;">
+            </span>
+        </div>
+
+        <div class="index_category" style="margin-top: -5px;margin-bottom: 15px;">
+            <a>
+                <button class="category_item" type="button">
+                    品葱备份
+                </button>
+            </a>
+        </div>
+
+        <div style="margin-top: 0px;margin-bottom: 35px;">
+            <div class="cates_wrap">
+                <div class="cates_list cates_list-1">
+                    <a target="new" class="tag" href="{{ site.baseurl }}/tags.html#政治">政治</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% include sidebar.html %}
+
+</div>
