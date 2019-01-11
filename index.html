@@ -2,13 +2,15 @@
 layout: default
 ---
 
+{% assign allTags = site.p | map: 'tags' | join: ',' | split: ',' | uniq %}
+
 {% include translate_link.html %}
 
 <div class="row">
     <div class="col-md-9">
 
         <div class="row pagebar">
-            <div class="col-sm-3 " style="float:left;width: 15%;margin-top: 10px; display: none;">
+            <div class="col-sm-3 " style="float:left;width: 15%;margin-top: 10px;">
                 <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" style="color: #999;">
                         排序: 提问时间 <span class="caret"></span>
@@ -18,7 +20,7 @@ layout: default
                     </ul>
                 </div>
             </div>
-            <span id="btn-post-answer-btm " class="btn btn-cancel pull-right desktop-only" style="display: none;">
+            <span id="btn-post-answer-btm " class="btn btn-cancel pull-right desktop-only">
                 <a style="color: #333;">
                     <i class="fa fa-leaf" style="width: 22px;"></i>
                     问题池
@@ -34,7 +36,37 @@ layout: default
         <div class="index_category" style="margin-top: -5px;margin-bottom: 15px;">
             <a>
                 <button class="category_item" type="button">
-                    品葱备份
+                    时政
+                </button>
+            </a>
+            <a>
+                <button class="category_item" type="button">
+                    财经
+                </button>
+            </a>
+            <a>
+                <button class="category_item" type="button">
+                    世界
+                </button>
+            </a>
+            <a>
+                <button class="category_item" type="button">
+                    科技
+                </button>
+            </a>
+            <a>
+                <button class="category_item" type="button">
+                    文娱
+                </button>
+            </a>
+            <a>
+                <button class="category_item" type="button">
+                    生活
+                </button>
+            </a>
+            <a>
+                <button class="category_item" type="button">
+                    其他
                 </button>
             </a>
         </div>
@@ -42,7 +74,11 @@ layout: default
         <div style="margin-top: 0px;margin-bottom: 35px;">
             <div class="cates_wrap">
                 <div class="cates_list cates_list-1">
-                    <a target="new" class="tag" href="{{ site.baseurl }}/tags.html#政治">政治</a>
+                    {% for tag in allTags %}
+                    <a class="tag" href="{{ site.baseurl }}/tags.html#{{ tag }}" target="_blank">
+                        {{ tag }}
+                    </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
