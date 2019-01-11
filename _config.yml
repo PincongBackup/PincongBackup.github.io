@@ -87,9 +87,9 @@ sass:
 
 # Use the following plug-ins
 # plugins:
-#   - jekyll-paginate
-#   - jekyll-seo-tag
-#   - jekyll-sitemap
+# - jekyll-paginate
+# - jekyll-sitemap
+# - jekyll-seo-tag
 
 # Exclude these files from your production _site
 exclude:

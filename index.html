@@ -33,54 +33,26 @@ layout: default
             </span>
         </div>
 
-        <div class="index_category" style="margin-top: -5px;margin-bottom: 15px;">
-            <a>
-                <button class="category_item" type="button">
-                    时政
-                </button>
-            </a>
-            <a>
-                <button class="category_item" type="button">
-                    财经
-                </button>
-            </a>
-            <a>
-                <button class="category_item" type="button">
-                    世界
-                </button>
-            </a>
-            <a>
-                <button class="category_item" type="button">
-                    科技
-                </button>
-            </a>
-            <a>
-                <button class="category_item" type="button">
-                    文娱
-                </button>
-            </a>
-            <a>
-                <button class="category_item" type="button">
-                    生活
-                </button>
-            </a>
-            <a>
-                <button class="category_item" type="button">
-                    其他
-                </button>
-            </a>
-        </div>
+        <div id="post-list">
+            {% for post in site.p reversed %}
+                <div class="post-body-wrap post-body-wrap-list post-row Answer normal" style="padding: 10px 5px 10px 5px;">
+                    <div class="title-box clearfix">
 
-        <div style="margin-top: 0px;margin-bottom: 35px;">
-            <div class="cates_wrap">
-                <div class="cates_list cates_list-1">
-                    {% for tag in allTags %}
-                    <a class="tag" href="{{ site.baseurl }}/tags.html#{{ tag }}" target="_blank">
-                        {{ tag }}
-                    </a>
-                    {% endfor %}
+                        <div class="post-title title">
+                            <a target="_blank" href="{{ site.baseurl }}{{ post.url }}">
+                                {{ post.title }}
+                            </a>
+                        </div>
+
+                        <div class="tags tag-pad" style="margin:3px 0 3px 10px;">
+                            {% for tag in post.tags %}
+                                <a class="tag" href="{{ site.baseurl }}/tags.html#{{ tag }}">{{ tag }}</a>
+                            {% endfor %}
+                        </div>
+
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
 
     </div>
