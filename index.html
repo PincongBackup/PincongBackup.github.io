@@ -34,8 +34,61 @@ layout: default
         </div>
 
         <div id="post-list">
+
+            <div 
+                class="post-body-wrap post-body-wrap-list post-row" 
+                style="padding: 10px 5px 10px 5px;"
+                data-index="0"
+                data-pagination="0"
+            >
+                <div class="title-box clearfix">
+
+                    <div class="post-title title">
+                        <a target="_blank" href="{{ site.baseurl }}/participate.html">
+                            【置顶】如何协作参与品葱备份计划
+                        </a>
+                    </div>
+
+                    <div class="tags tag-pad" style="margin:3px 0 3px 10px;">
+                        <a class="tag" href="{{ site.baseurl }}/tags.html#参与">参与</a>
+                    </div>
+
+                    <!-- <div class="clearfix"></div> -->
+
+                    <div class="post-action" style="padding:0;margin-top:10px;">
+                        <span class="userlink muted btn-gray">
+                            <span class="btn-gray">
+                                2019-01-12
+                            </span>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
             {% for post in site.p reversed %}
-                <div class="post-body-wrap post-body-wrap-list post-row Answer normal" style="padding: 10px 5px 10px 5px;">
+                {% assign postURL = post.url | split: "/" %}
+                {% assign postID = postURL[2] %}
+
+                {% assign answersOfTheQuestion = "" | split: "," %}
+                {% for answer in site.answers %}
+                    {% assign answerURL = answer.url | split: "/" %}
+                    {% if postID == answerURL[2] %}
+                        {% assign answersOfTheQuestion = answersOfTheQuestion | push: answer %}
+                    {% endif %}
+                {% endfor %}
+
+                {% assign postIndex = forloop.index0 | plus: 1 %}
+
+                {% assign postPagination = postIndex | divided_by: 10 %}
+
+                <div 
+                    class="post-body-wrap post-body-wrap-list post-row {% if postPagination >= 1 %}hidden{% endif %}" 
+                    style="padding: 10px 5px 10px 5px;"
+                    id="post-{{ postID }}"
+                    data-index="{{ postIndex }}"
+                    data-pagination="{{ postPagination }}"
+                >
                     <div class="title-box clearfix">
 
                         <div class="post-title title">
@@ -50,9 +103,66 @@ layout: default
                             {% endfor %}
                         </div>
 
+                        <div class="clearfix"></div>
+
+                        <div class="post-action" style="padding:0;margin-top:10px;">
+                            
+                            <span class="vote upvote mark btn-action fa fa-thumbs-o-up" title="赞同">
+                                <span class="vote-btn-text zhidao-font">赞
+                                    <span class="count-wrap">
+                                        <span class="mainpost-count" style="font-size: 13px;">
+                                            {{ post.upvote | default: 0 }}
+                                        </span>
+                                    </span>
+                                </span>
+                            </span>
+                            
+                            <span class="vote downvote tip btn-action fa fa-thumbs-o-down" title="不赞同">
+                                <span class="count-wrap zhidao-font">
+                                    {{ post.downvote }}
+                                </span>
+                            </span>
+
+                            <span class="label label-default view-comment" style="margin-left:10px;">
+                                &nbsp;{{ post.comments | size | default: 0}}条评论
+                            </span>
+
+                            <span class="label label-default view-comment" style="margin-left:10px;">
+                                &nbsp;{{ answersOfTheQuestion.size }}个回答&nbsp;
+                            </span>
+
+                            <span class="userlink muted btn-gray">
+                                <span class="btn-gray">
+                                    {{ post.date | date: "%Y-%m-%d" }}
+                                </span>
+                            </span>
+                
+                        </div>
+
                     </div>
                 </div>
             {% endfor %}
+
+            <div class="qpool-page" style="border-top: 1px solid #ECECEC;">
+                <span class="qpool-prev hidden">上一页</span>
+                <span class="qpool-next hidden">下一页</span>
+            </div>
+
+            <style type="text/css">
+                .qpool-page {
+                    text-align: center;
+                    padding: 20px 0 0 0;
+                    font-size: 13px;
+                }
+
+                .qpool-prev,
+                .qpool-next {
+                    color: #999;
+                    cursor: pointer;
+                    margin-left: 20px;
+                }
+            </style>
+
         </div>
 
     </div>
@@ -60,3 +170,5 @@ layout: default
     {% include sidebar.html %}
 
 </div>
+
+<script src="{{ site.baseurl }}/index.min.js"></script>
