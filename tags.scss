@@ -1,0 +1,174 @@
+---
+---
+
+$small-font-size: 14px;
+
+$base-color: #343a40;
+$base-lighten-color: #868e96;
+
+$tag-index-label-color: #343a40;
+$tag-index-label-background-color: #e9ecef;
+$tag-index-count-background-color: #dee2e6;;
+
+$li-bottom-space: 0.4em;
+$li-bullets-width: 1.4em;
+$li-line-height: 1.55;
+$li-child-size-ratio: 0.95;
+
+$ul-bullets-font: inherit;
+$ul-bullets-font-size: 1.4em;
+$ul-bullets-font-line-height: 1.2;
+$ul-bullets-right-space: .3em;
+
+$ol-bullets-font: inherit;
+$ol-bullets-font-size: 1em;
+$ol-bullets-font-line-height: inherit;
+$ol-bullets-right-space: .3em;
+
+.tags-page {
+
+    color: $base-color;
+    font-size: 18px;
+    font-family: Optima, "Lucida Sans", Calibri, Candara, Arial, source-han-serif-sc, "Source Han Serif SC", "Source Han Serif CN", "Source Han Serif TC", "Source Han Serif TW", "Source Han Serif", "Songti SC", "Microsoft YaHei", sans-serif;
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-weight: bold;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        line-height: 1.7;
+        margin: 1em 0 15px;
+        padding: 0;
+      
+        @media screen and (max-width: 640px) {
+            line-height: 1.4;
+        }
+    }
+
+    &.tags-page-tags {
+
+        > .tags-page-label {
+
+            > li:before {
+                content: "";
+            }
+
+            > li {
+                margin: 0;
+                font-size: $small-font-size;
+                font-weight: 300;
+                display: inline;
+
+                > a {
+                    display: inline-block;
+                    margin: 1px;
+                    color: $tag-index-label-color;
+                    background-color: $tag-index-label-background-color;
+                    border-radius: 3px;
+            
+                    span {
+                        float: left;
+                        padding: .5px 5px;
+
+                        &.count {
+                            background-color: $tag-index-count-background-color;
+                            border-radius: 0 3px 3px 0;
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        > .tags-page-tag-item {
+
+            a {
+                color: $base-color;
+            }
+
+            time {
+                color: $base-lighten-color;
+                font-size: $small-font-size;
+                font-weight: 300;
+                margin-left: 3px;
+            }
+
+        }
+
+        > .tags-page-label, > .tags-page-tag-item {
+            padding-left: 0px;
+            margin-bottom: 0px;
+        }
+
+    }
+
+    ol, ul, dl {
+        list-style: none;
+    }
+
+    ol, ul {
+        > li {
+            &:before {
+                position: absolute;
+                width: $li-bullets-width;
+                margin-left: -$li-bullets-width;
+                display: inline-block;
+                box-sizing: border-box;
+                text-align: right;
+            }
+        }
+    }
+
+    ul {
+        > li:before {
+            content: "\2022";
+            padding-right: $ul-bullets-right-space;
+            font-family: $ul-bullets-font;
+            font-size: $ul-bullets-font-size;
+            line-height: $ul-bullets-font-line-height;
+        }
+    }
+
+    ol {
+        counter-reset: section;
+        > li:before {
+            counter-increment: section;
+            content: counter(section) ".";
+            padding-right: $ol-bullets-right-space;
+            font-family: $ol-bullets-font;
+            font-size: $ol-bullets-font-size;
+            line-height: $ol-bullets-font-line-height;
+        }
+    }
+
+    ol, ul {
+        > li {
+            margin: 0 auto $li-bottom-space $li-bullets-width;
+            line-height: $li-line-height;
+            > ol, > ul {
+                margin-top: $li-bottom-space;
+            }
+        }
+    }
+
+    li {
+        > ol, > ul {
+            > li {
+                font-size: ($li-child-size-ratio * 1em);
+                margin: 0 auto ($li-bottom-space * $li-child-size-ratio) ($li-bullets-width * $li-child-size-ratio);
+            }
+        }
+    }
+
+}
