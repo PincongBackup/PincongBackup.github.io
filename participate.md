@@ -115,10 +115,11 @@ permalink: participate.html
 
     其中必填项是 标题 (`title`) 和 提问日期和时间 (`date`) ，提问时间如无法获取，可参考前后两个问题的提问时间
 
-2. 每个问题回答的备份，开头都需要说明 回答日期和时间（格式同提问日期和时间）、回答者的用户名、回答者的用户自我介绍、回答者的用户头像、赞同数、反对数、评论。格式如下：
+2. 每个问题回答的备份，开头都需要说明 回答日期和时间（格式同提问日期和时间）、回答者的uid、回答者的用户名、回答者的用户自我介绍、回答者的用户头像、赞同数、反对数、评论。格式如下：
 
     <pre><code>---
     date: 2017-09-16T10:23:18.600-05:00
+    user_id: 
     user_name: 机械牛A
     user_intro: 努力提高姿势水平
     user_avatar: /static/upload/thumb/small50-u-thumb-11696b84c91035851a307f29fb3723d39ee293be024.png
@@ -131,6 +132,7 @@ permalink: participate.html
     空白模板：
     <pre><code>---
     date: 
+    user_id: 
     user_name: 
     user_intro: 
     user_avatar: 
@@ -157,6 +159,8 @@ permalink: participate.html
 * [archive.fo (原 archive.is、archive.today)](http://archive.fo/)
 
 * [telegram 品葱搬运工](https://t.me/todayfreedom)
+
+* [新品葱的品葱备份相关话题](https://pincong.rocks/topic/品葱备份)
 
 * 自己的私人笔记、存档（可能）
 
