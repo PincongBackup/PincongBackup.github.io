@@ -70,6 +70,8 @@ version: v3.8.4
 kramdown:
   # Use GitHub flavored markdown, including triple backtick fenced code blocks
   input: GFM
+  # Transliterate the header text before generating the ID
+  transliterated_header_ids: true
   # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
   syntax_highlighter: rouge
   syntax_highlighter_opts:

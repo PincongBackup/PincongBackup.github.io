@@ -23,7 +23,15 @@
                         </div>
                         <span class="post-detail-user-box col-xs-3 col-md-2 box pull-right text-center">
                             <a>
-                                <img src="{{ site.baseurl }}/static/upload/thumb/u-thumb-default.png" />
+                                {% if answer.user_avatar %}
+                                    {% if answer.user_avatar contains 'http://' or answer.user_avatar contains 'https://' %}
+                                        <img src="{{ answer.user_avatar }}" />
+                                    {% else %}
+                                        <img src="{{ site.baseurl }}{{ answer.user_avatar }}" />
+                                    {% endif %}
+                                {% else %}
+                                    <img src="{{ site.baseurl }}/static/upload/thumb/u-thumb-default.png" />
+                                {% endif %}
                             </a>
                         </span>
                     </div>
@@ -33,7 +41,7 @@
                     <div class="post-list-content">
                         <div class="post-text-wrap post-text-wrap-detail">
                             <div class="post-text post-text-detail">
-                                {{ answer.content }}
+                                {{ answer.content | markdownify }}
                             </div>
                         </div>
                     </div>
