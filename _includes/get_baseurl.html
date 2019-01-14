@@ -1,0 +1,7 @@
+
+{% assign pathDepth = page.url | append: " " | split: "/" | size | minus: 2 %}
+{% assign baseURL = "./" %}
+
+{% for i in (0..pathDepth) offset: 1 %}
+    {% assign baseURL = baseURL | append: "../" %}
+{% endfor %}
