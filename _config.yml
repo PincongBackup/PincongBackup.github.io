@@ -97,6 +97,9 @@ sass:
 exclude:
   - Gemfile
   - Gemfile.lock
-  - LICENSE
   - README.md
   - CNAME
+  - Rakefile
+  - "*.Rmd"
+  - vendor
+  - .travis.yml

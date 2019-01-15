@@ -1,0 +1,18 @@
+
+language: ruby
+
+git:
+  depth: 1
+
+branches:
+  only:
+  - master
+
+env:
+  global:
+    secure: "LSzi7uHJY6RG8wQ01NbeqUmVCvk778rIUeXRndXWarHiAt5xI847FWEso0DgxsLQHAjWQaq4sBBRQZauErqMdKbm3vEcRtfHtbITCEomqR378Xbd9suVHY68MfLdgms3Y0T4cIZdZ72uSUqOq7JBKntn7z5t0Z4m+D3iTBfEPrQ5PrKy9dMTypvLjGu47wRinm5wFPCLoLQXGYCIVAFLFG4JWt+FvwQi66jCR1DtnqeRJ4gvh5RlSVwQS8gV/Pl0AtU0BRbvN8nCnDu+g2pcHaas8vIzTIrLvcYCbgLr2iuQKloZuMGwXW6xrrauJ9f42lTM3+2uoccP+c04+fbhT5ExuOWHQloaTTW8KHyT46fCyWJ5jHPHMdlQbZ0d6cf3GY6n8zuMPkA2CE4rn5uGyuzjbam2Y8FfnOTi8so4dLRf2cRv4ePlTMjYbJIb7L0Q9wbbAj9nqxtBdQP2pITWsSaR27evRJrrMmKdep0IMC7i4vnDuYiswscKO9ils1mzKgXCIj4QsQ0s7EtGfgD80pq67okfjYZCcA05OLqJcwCegA3hASAUcVJvuDxI3DYqP8ge0rDZ5q0wjVcC5sq0iKFtH3qyTdVnEkNH252WM3XbNPbDTt719DrByStVybKW/oFLWYx43Hc6SG0F0SENEumakHgMIyB7w0ZvEuWrruU="
+
+install:
+  - bundle install
+
+script: bundle exec rake deploy --quiet
