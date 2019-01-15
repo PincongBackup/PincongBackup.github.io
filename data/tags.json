@@ -1,0 +1,27 @@
+---
+---
+{% include sort_tags.html %}
+
+[
+    {% for tag in sortedTags %}
+        {% assign postsOfTheTag = "" | split: "," %}
+        {% for post in site.p %}
+            {% if post.tags contains tag %}
+                {% assign postsOfTheTag = postsOfTheTag | push: post %}
+            {% endif %}
+        {% endfor %}
+
+    {
+        "name": {{ tag | jsonify }},
+        "size": {{ postsOfTheTag.size }},
+        "posts": [
+            {% for post in postsOfTheTag reversed %}
+            {
+                "title": {{ post.title | jsonify }},
+                "url": {{ post.url | jsonify }}
+            }{% if forloop.last != true %},{% endif %}
+            {% endfor %}
+        ]
+    }{% if forloop.last != true %},{% endif %}
+    {% endfor %}
+]

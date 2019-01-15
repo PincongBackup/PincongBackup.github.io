@@ -1,5 +1,4 @@
 
-{% include sort_tags.html %}
 
 <div class="col-xs-12 col-md-3 sidebar">
 
@@ -51,36 +50,9 @@
         </div>
 
         <div class="user-detail-action-cnt">
-            {% for tag in sortedTags limit:3 %}
-                <div class="user-detail-item">
-                    <a class="tag" href="{{ site.baseurl }}/tags.html#{{ tag }}">{{ tag }}</a>
-                    <br />
 
-                    {% assign postsOfTheTag = "" | split: "," %}
-                    {% for post in site.p %}
-                        {% if post.tags contains tag %}
-                            {% assign postsOfTheTag = postsOfTheTag | push: post %}
-                        {% endif %}
-                    {% endfor %}
-
-                    <div class="user-detail-tag-info">
-
-                        <span class="btn-gray">
-                            {{ postsOfTheTag.size }}个问题
-                        </span>
-
-                        {% for post in postsOfTheTag reversed limit:3 %}
-                            <div class="tags-post-title">
-                                <a target="_blank" href="{{ site.baseurl }}{{post.url}}" title="{{post.title}}">
-                                    {{post.title}}
-                                </a>
-                            </div>
-                        {% endfor %}
-
-                    </div>
-                </div>
-            {% endfor %}
         </div>
+
     </div>
 
     <div class="right-foot btn-gray">
@@ -111,3 +83,9 @@
     </div>
 
 </div>
+
+<script>
+    window.baseUrl = "{{ site.baseurl }}"
+</script>
+
+<script src="{{ site.baseurl }}/lib/sidebar.min.js"></script>
