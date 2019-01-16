@@ -12,12 +12,17 @@ permalink: about.html
 
 品葱备份计划旨在将这些零碎的备份集中起来，在品葱熟悉的界面上重新显示，加快恢复品葱原貌。
 
-<!-- > 抵抗互联网审查，需要公众参与新方法 -->
+品葱备份计划使用 GitHub 开放平台托管，网站在 Github 和 IPFS 上同步搭建，便于墙内网络传播。
 
-<!-- ## 镜像
+## 镜像
 
-* [IPFS]() -->
+### IPFS
 
+* [Cloudflare IPFS](https://cloudflare-ipfs.com/ipns/QmZypJxFqniaRXkuN9vVQxvnUcnC5PACpiioMgABk87aNN)
+
+* [IPFS.io](https://ipfs.io/ipns/QmZypJxFqniaRXkuN9vVQxvnUcnC5PACpiioMgABk87aNN)
+
+* [本地自建IPFS网关 ipns://QmZypJxFqniaRXkuN9vVQxvnUcnC5PACpiioMgABk87aNN](http://localhost:8080/ipns/QmZypJxFqniaRXkuN9vVQxvnUcnC5PACpiioMgABk87aNN)
 
 ## 联系我们
 

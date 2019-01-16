@@ -28,20 +28,19 @@
 
 ## 镜像
 
+### IPFS
+
 * [Cloudflare IPFS](https://cloudflare-ipfs.com/ipns/QmZypJxFqniaRXkuN9vVQxvnUcnC5PACpiioMgABk87aNN)
 
 * [IPFS.io](https://ipfs.io/ipns/QmZypJxFqniaRXkuN9vVQxvnUcnC5PACpiioMgABk87aNN)
+
+* [本地自建IPFS网关 ipns://QmZypJxFqniaRXkuN9vVQxvnUcnC5PACpiioMgABk87aNN](http://localhost:8080/ipns/QmZypJxFqniaRXkuN9vVQxvnUcnC5PACpiioMgABk87aNN)
 
 ## 本地预览
 
 本项目自动构建生成的页面单独存放在 [PincongBackup/pages](https://github.com/PincongBackup/pages) 仓库，可以直接下载查看。
 
-1. 
-
-```bash
-git clone --depth=1 https://github.com/PincongBackup/pages.git
-```
-
+1. 在命令行中输入 `git clone --depth=1 https://github.com/PincongBackup/pages.git`
 或者 下载[zip文件](https://github.com/PincongBackup/pages/archive/master.zip)并解压缩
 
 2. 在浏览器中打开 `index.html`
