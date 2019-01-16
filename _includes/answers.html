@@ -27,10 +27,10 @@
                                     {% if answer.user_avatar contains 'http://' or answer.user_avatar contains 'https://' %}
                                         <img src="{{ answer.user_avatar }}" />
                                     {% else %}
-                                        <img src="{{ site.baseurl }}{{ answer.user_avatar }}" />
+                                        <img src="{{ baseURL }}{{ answer.user_avatar }}" />
                                     {% endif %}
                                 {% else %}
-                                    <img src="{{ site.baseurl }}/static/upload/thumb/u-thumb-default.png" />
+                                    <img src="{{ baseURL }}/static/upload/thumb/u-thumb-default.png" />
                                 {% endif %}
                             </a>
                         </span>

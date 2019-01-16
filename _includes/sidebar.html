@@ -34,7 +34,7 @@
             
             {% for post in moreLikeItems %}
                 <div class="more-like-item">
-                    <a href="{{ site.baseurl }}{{post.url}}">
+                    <a href="{{ baseURL }}{{post.url}}">
                         {{post.title}}
                     </a>
                 </div>
@@ -46,7 +46,7 @@
     <div class="user-detail-right-action">
 
         <div class="user-detail-action-title btn-gray">
-            <a style="color: #999;" href="{{ site.baseurl }}/tags.html">热门话题 &raquo;</a>
+            <a style="color: #999;" href="{{ baseURL }}/tags.html">热门话题 &raquo;</a>
         </div>
 
         <div class="user-detail-action-cnt">
@@ -56,7 +56,7 @@
     </div>
 
     <div class="right-foot btn-gray">
-        <a class="btn-gray" target="_blank" href="{{ site.baseurl }}/protocol/">
+        <a class="btn-gray" target="_blank" href="{{ baseURL }}/protocol/">
             品葱行为倡议
         </a>
         &#9643; © 2018-2019 品葱备份计划 
@@ -65,7 +65,7 @@
             反馈/改进
         </a>
         &#9643; 
-        <a class="btn-gray" target="_blank" href="{{ site.baseurl }}/atom.xml">
+        <a class="btn-gray" target="_blank" href="{{ baseURL }}/atom.xml">
             RSS
         </a>
         &#9643; 
@@ -85,7 +85,7 @@
 </div>
 
 <script>
-    window.baseUrl = "{{ site.baseurl }}"
+    window.baseUrl = "{{ baseURL }}"
 </script>
 
-<script src="{{ site.baseurl }}/lib/sidebar.min.js"></script>
+<script src="{{ baseURL }}/lib/sidebar.min.js"></script>

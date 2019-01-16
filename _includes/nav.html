@@ -3,8 +3,8 @@
 
         <div class="row visible-sm visible-xs">
             <div class="col-xs-4" style="width: 25%; height: 43px; padding: 0px; top: 2px; left: 5px;">
-                <a href="{{ site.baseurl }}/">
-                    <img style="width:87px; height: 40px;" src="{{ site.baseurl }}/static/pc.logo.png">
+                <a href="{{ baseURL }}/">
+                    <img style="width:87px; height: 40px;" src="{{ baseURL }}/static/pc.logo.png">
                 </a>
             </div>
         </div>
@@ -12,11 +12,11 @@
         <div class="row visible-lg visible-md">
             <div class="col-md-12" id="navbar">
 
-                <a href="{{ site.baseurl }}/" class="col-lg-3 visible-lg" id="logo" style="background-image: url({{ site.baseurl }}/static/pc.logo.png); height: 100%; top: -1px; margin-right: 1em;"></a>
+                <a href="{{ baseURL }}/" class="col-lg-3 visible-lg" id="logo" style="background-image: url({{ baseURL }}/static/pc.logo.png); height: 100%; top: -1px; margin-right: 1em;"></a>
 
                 <div class="col-md-3 visible-md text-center" style="width: 11%;">
-                    <a href="{{ site.baseurl }}/">
-                        <img style="width:90px; height: 40px;" src="{{ site.baseurl }}/static/pc.logo.png">
+                    <a href="{{ baseURL }}/">
+                        <img style="width:90px; height: 40px;" src="{{ baseURL }}/static/pc.logo.png">
                     </a>
                 </div>
 
@@ -27,7 +27,7 @@
                                 {{ nav.name }}
                             </a>
                         {% else %}
-                            <a href="{{ site.baseurl }}{{ nav.url }}" style="position: relative; top: -5px;">
+                            <a href="{{ baseURL }}{{ nav.url }}" style="position: relative; top: -5px;">
                                 {{ nav.name }}
                             </a>
                         {% endif %}

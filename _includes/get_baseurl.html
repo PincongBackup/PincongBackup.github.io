@@ -1,7 +1,11 @@
 
 {% assign pathDepth = page.url | append: " " | split: "/" | size | minus: 2 %}
-{% assign baseURL = "./" %}
+{% assign baseURL = "." %}
 
 {% for i in (0..pathDepth) offset: 1 %}
-    {% assign baseURL = baseURL | append: "../" %}
+    {% assign baseURL = baseURL | prepend: "../" %}
 {% endfor %}
+
+{% if page.path == "404.html" %}
+    {% assign baseURL = site.baseurl %}
+{% endif %}

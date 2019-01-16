@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% include get_baseurl.html %}
+
 {% assign postURL = page.url | split: "/" %}
 {% assign postID = postURL[2] %}
 
@@ -28,7 +30,7 @@ layout: default
                 <div class="post-body-wrap post-body 问题池 post-body-wrap-103268 clearfix" style="margin-top: 5px;">
                     <div class="tags clearfix" style="margin-bottom:0.5em;">
                         {% for tag in page.tags %}
-                        <a class="tag" href="{{ site.baseurl }}/tags.html#{{ tag }}">
+                        <a class="tag" href="{{ baseURL }}/tags.html#{{ tag }}">
                             {{ tag }}
                         </a>
                         {% endfor %}
