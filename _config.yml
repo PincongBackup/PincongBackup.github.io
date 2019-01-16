@@ -103,3 +103,4 @@ exclude:
   - "*.Rmd"
   - vendor
   - .travis.yml
+  - key.enc

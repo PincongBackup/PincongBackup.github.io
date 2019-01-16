@@ -39,7 +39,7 @@ task :deploy do
     
     puts "_site"
 
-    Dir.chdir("_site") { sh "git checkout #{DESTINATION_BRANCH}" }
+    Dir.chdir("_site") { sh "git rm -rf ." }
 
     sh "bundle exec jekyll build"
 
@@ -51,8 +51,20 @@ task :deploy do
     sha = `git log`.match(/[a-z0-9]{40}/)[0]
     Dir.chdir("_site") do
       sh "git add --all ."
-      sh "git commit -m 'Updating to ##{sha}.\n#{ipfs_hash}'"
+      sh "git commit -m 'Updating to ##{sha}. ipfs://#{ipfs_hash}'"
       sh "git push --quiet origin #{DESTINATION_BRANCH}"
       puts "Pushed updated branch #{DESTINATION_BRANCH} to GitHub Pages"
     end
+
+    while true do
+      peers = `ipfs swarm peers | wc -l`.match(/\d+/)[0].to_i
+      if peers >= 100 then
+        puts "\nConnected to #{peers} peers"
+        sh `ipfs swarm peers`
+        break
+      else
+        sleep(1)
+      end
+    end
+
 end
