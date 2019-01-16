@@ -14,5 +14,13 @@ env:
 
 install:
   - bundle install
+  - wget https://dist.ipfs.io/go-ipfs/v0.4.18/go-ipfs_v0.4.18_linux-amd64.tar.gz -O /tmp/ipfs.tar.gz
+  - cd /tmp/ && tar -xvf /tmp/ipfs.tar.gz && cd -
+  - sudo cp /tmp/go-ipfs/ipfs /usr/local/bin/
+
+before_script:
+  - ipfs init
+  - openssl aes-256-cbc -K $encrypted_38a357218167_key -iv $encrypted_38a357218167_iv -in ./key.enc -out ~/.ipfs/keystore/key -d
+  - ipfs daemon &
 
 script: bundle exec rake deploy --quiet

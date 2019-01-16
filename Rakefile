@@ -9,7 +9,7 @@ require 'rake'
 require 'date'
 
 USERNAME = "PincongBackup"
-REPO = "#{USERNAME}.github.io"
+REPO = "pages"
 
 SOURCE_BRANCH = "master"
 DESTINATION_BRANCH = "master"
@@ -43,11 +43,15 @@ task :deploy do
 
     sh "bundle exec jekyll build"
 
+    sh "ipfs swarm peers"
+    ipfs_hash = `ipfs add -r -Q _site`.match(/\w+/)[0]
+    sh "ipfs name publish --key=key #{ipfs_hash}"
+
     # Commit and push to github
     sha = `git log`.match(/[a-z0-9]{40}/)[0]
     Dir.chdir("_site") do
       sh "git add --all ."
-      sh "git commit -m 'Updating to ##{sha}.'"
+      sh "git commit -m 'Updating to ##{sha}.\n#{ipfs_hash}'"
       sh "git push --quiet origin #{DESTINATION_BRANCH}"
       puts "Pushed updated branch #{DESTINATION_BRANCH} to GitHub Pages"
     end
