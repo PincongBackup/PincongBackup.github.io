@@ -48,6 +48,9 @@ collections:
     permalink: /p/:name/
   answers:
     output: false
+  articles:
+    output: true
+    permalink: /p/:name/
 
 defaults:
   - scope:
@@ -55,6 +58,11 @@ defaults:
       type: p
     values:
       layout: post
+  - scope:
+      path: ""
+      type: articles
+    values:
+      layout: article
 
 #
 # !! You don't need to change any of the configuration flags below !!

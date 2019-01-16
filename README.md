@@ -51,6 +51,7 @@
 gem install bundler jekyll
 git clone --depth=1 https://github.com/PincongBackup/PincongBackup.github.io.git
 cd PincongBackup.github.io
+rm ./Gemfile
 jekyll serve
 ```
 

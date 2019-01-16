@@ -4,30 +4,21 @@ layout: default
 
 {% include get_baseurl.html %}
 
-{% assign postURL = page.url | split: "/" %}
-{% assign postID = postURL[2] %}
-
-{% assign answersOfTheQuestion = "" | split: "," %}
-{% for answer in site.answers %}
-    {% assign answerURL = answer.url | split: "/" %}
-    {% if postID == answerURL[2] %}
-        {% assign answersOfTheQuestion = answersOfTheQuestion | push: answer %}
-    {% endif %}
-{% endfor %}
-
 {% include translate_link.html %}
 
 <div class="row">
     <div class="col-xs-12 col-md-9">
         <div id="post-details">
             <span>
-                <div class="hide-reason-wrapper">
-                    <div class="hide-reason ">
-                        状态: 问题池
-                    </div>
+                <div class="post-topic-detail-title" style="height: auto;min-height: 50px;">
+                    <h3>
+                        <i class="fa fa-newspaper-o" style="margin-top:5px;"></i>
+                        专栏文章
+                    </h3>
                 </div>
 
-                <div class="post-body-wrap post-body 问题池 clearfix" style="margin-top: 5px;">
+                <div class="post-body-wrap post-body 正常 clearfix" style="margin-top: 5px;border-bottom: none;">
+
                     <div class="tags clearfix" style="margin-bottom:0.5em;">
                         {% for tag in page.tags %}
                         <a class="tag" href="{{ baseURL }}/tags.html#{{ tag }}">
@@ -40,25 +31,49 @@ layout: default
                         <span itemprop="name">{{ page.title }}</span>
                     </div>
 
+                    <div class="post-user-wrapper" style="padding: 15px 0;">
+
+                        <span class="post-detail-user-box col-xs-3 col-md-2 box pull-right text-center" style="margin-top: -5px !important;float: left !important;">
+                            <a>
+                                {% if page.user_avatar %}
+                                    {% if page.user_avatar contains 'http://' or page.user_avatar contains 'https://' %}
+                                        <img src="{{ page.user_avatar }}" />
+                                    {% else %}
+                                        <img src="{{ baseURL }}{{ page.user_avatar }}" />
+                                    {% endif %}
+                                {% else %}
+                                    <img src="{{ baseURL }}/static/upload/thumb/u-thumb-default.png" />
+                                {% endif %}
+                            </a>
+                        </span>
+
+                        <span class="post-user-name" style="margin-left: 10px;">
+                            <a target="_blank" class="aw-user-name">
+                                {{ page.user_name | default: "品葱用户" }}
+                            </a>
+                        </span>
+
+                    </div>
+
                     <div>
                         <div class="content post-content" style="margin-bottom: 2px;">
-                            
+
                             <div class="post-mod-agree">
                                 <i class="fa fa-star-o" style="font-size: 16px;margin-right: 0.5em;position: relative;top: 0.5px;color: #bcbcbc;"></i>
-                                {{ page.upvote | default: 0 }}人赞同
-                                {{ page.follow | default: 0 }}人关注
+                                {{ page.upvote | default: 0 }}人赞过
                             </div>
 
                             <div class="post-list-content">
                                 <div class="post-text-wrap post-text-wrap-detail">
-                                    <div class="post-text post-text-detail">
+                                    <div class="post-text post-text-detail-column">
                                         {{ content }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="clearfix">
-                                <div class="post-action">
+                                <div class="post-action" style="padding-bottom: 20px;">
+
                                     <div class="post-action-time">
                                         <span class="userlink muted btn-gray">
                                             <span class="btn-gray">
@@ -97,15 +112,9 @@ layout: default
                             </div>
                         </div>
                     </div>
-                    <div id="num_of_ans" style="padding: 10px; font-size: 16px; margin-top:50px;">
-                        {{ answersOfTheQuestion.size }}个回答
-                    </div>
+
                 </div>
             </span>
-
-            <div class="answers-wrap">
-                {% include answers.html %}
-            </div>
 
         </div>
     </div>

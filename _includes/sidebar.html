@@ -49,8 +49,33 @@
             <a style="color: #999;" href="{{ baseURL }}/tags.html">热门话题 &raquo;</a>
         </div>
 
-        <div class="user-detail-action-cnt">
+        <div class="user-detail-action-cnt" id="hot-topics">
 
+        </div>
+
+    </div>
+
+    <div class="user-detail-right-action" style="padding:50px 0 20px 0;">
+    
+        <div class="user-detail-action-title btn-gray">
+            <a style="color: #999;">专栏文章 &raquo;</a>
+        </div>
+
+        {% assign articlesRandom8 = site.articles | sample: 8 %}
+
+        <div class="user-detail-action-cnt">
+            {% for article in articlesRandom8 %}
+            <div class="user-detail-item" style="padding: 0px;">
+                <div class="tags-post-title">
+                    <a target="_blank" href="{{ baseURL }}{{ article.url }}">
+                        {{ article.title }}
+                    </a>
+                    <a target="_blank">
+                        <span style="font-size: 10px;color: #999;">@{{ article.user_name }}</span>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
         </div>
 
     </div>
