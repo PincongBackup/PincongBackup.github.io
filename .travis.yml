@@ -24,3 +24,6 @@ before_script:
   - ipfs daemon &
 
 script: bundle exec rake deploy --quiet
+
+after_success:
+  - bundle exec rake sync --quiet

@@ -39,32 +39,61 @@ task :deploy do
     
     puts "_site"
 
-    Dir.chdir("_site") { sh "git rm -rf ." }
+    # clean
+    Dir.chdir("_site") { 
+      puts "\ncleaning"
+      files = `git rm -rf . | wc -l`.match(/\d+/)[0]
+      puts "#{files} files cleaned\n"
+    }
 
     sh "bundle exec jekyll build"
 
     sh "ipfs swarm peers"
     ipfs_hash = `ipfs add -r -Q _site`.match(/\w+/)[0]
+    sh "ipfs pin add -r /ipfs/#{ipfs_hash}"
     sh "ipfs name publish --key=key #{ipfs_hash}"
 
     # Commit and push to github
     sha = `git log`.match(/[a-z0-9]{40}/)[0]
     Dir.chdir("_site") do
       sh "git add --all ."
-      sh "git commit -m 'Updating to ##{sha}. ipfs://#{ipfs_hash}'"
+      sh "git commit -m 'Updating to ##{sha}. \nipfs://#{ipfs_hash}'"
       sh "git push --quiet origin #{DESTINATION_BRANCH}"
       puts "Pushed updated branch #{DESTINATION_BRANCH} to GitHub Pages"
     end
 
     while true do
       peers = `ipfs swarm peers | wc -l`.match(/\d+/)[0].to_i
+      puts "\nConnected to #{peers} peers"
+
       if peers >= 100 then
-        puts "\nConnected to #{peers} peers"
-        sh `ipfs swarm peers`
+        # sh "ipfs swarm peers"
         break
       else
-        sleep(1)
+        sleep(0.5)
       end
+
     end
 
+end
+
+task :sync do
+
+    max = 9 * 60 + 40
+    i = 0
+
+    puts "\nsyncing"
+
+    while i < max do
+
+      if i % 30 == 0 then
+        peers = `ipfs swarm peers | wc -l`.match(/\d+/)[0].to_i
+        puts "Connected to #{peers} peers"  
+      end
+
+      sleep(1)
+      i += 1
+
+    end
+  
 end
