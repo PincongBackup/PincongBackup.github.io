@@ -27,3 +27,4 @@ script: bundle exec rake deploy --quiet
 
 after_success:
   - bundle exec rake sync --quiet
+  - bundle exec rake test --quiet

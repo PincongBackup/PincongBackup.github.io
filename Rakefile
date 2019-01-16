@@ -97,3 +97,19 @@ task :sync do
     end
   
 end
+
+task :test do
+
+    puts "\ntesting"
+
+    ipns_hash = `ipfs key list -l`.match(/(\w{46}) key/)[1]
+    ipfs_hash = `ipfs name resolve #{ipfs_hash}`.match(/\w{46}/)[0]
+
+    endpoints = [ "cloudflare-ipfs.com", "ipfs.io", "ipfs.ink", "ipfs.guide" ]
+
+    endpoints.each do |i|
+      sh "curl 'https://#{i}/ipfs/#{ipfs_hash}' > /dev/null"
+      sh "curl 'https://#{i}/ipns/#{ipns_hash}' > /dev/null"
+    end
+
+end
