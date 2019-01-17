@@ -77,9 +77,12 @@ task :deploy do
 
 end
 
-task :sync do
+task :sync, [:minutes] do |t, args|
 
-    max = 9 * 60 + 40
+    args.with_defaults(:minutes => 10)
+    minutes = args.minutes.to_i
+
+    max = (minutes - 1) * 60 + 40
     i = 0
 
     puts "\nsyncing"
@@ -105,9 +108,9 @@ task :test do
     ipns_hash = `ipfs key list -l`.match(/(\w{46}) key/)[1]
     ipfs_hash = `ipfs name resolve #{ipfs_hash}`.match(/\w{46}/)[0]
 
-    endpoints = [ "cloudflare-ipfs.com", "ipfs.io", "ipfs.ink", "ipfs.guide" ]
+    gateways = [ "cloudflare-ipfs.com", "ipfs.io", "ipfs.ink" ]
 
-    endpoints.each do |i|
+    gateways.each do |i|
       sh "curl 'https://#{i}/ipfs/#{ipfs_hash}' > /dev/null"
       sh "curl 'https://#{i}/ipns/#{ipns_hash}' > /dev/null"
     end
