@@ -14,6 +14,16 @@ permalink: about.html
 
 品葱备份计划使用 GitHub 开放平台托管，网站在 Github 和 IPFS 上同步搭建，便于墙内网络传播。
 
+截至 {{ site.time | date: "%Y年%m月%d日" }}，本项目已成功备份问题 {{ site.p | size }} 个，回答 {{ site.answers | size }} 个，专栏文章 {{ site.articles | size }} 个。
+
+{% comment %}
+<!-- 
+{% assign total = 150000 %}
+
+截至 {{ site.time | date: "%Y年%m月%d日" }}，本项目已成功备份问题 {{ site.p | size }} 个，回答 {{ site.answers | size }} 个，专栏文章 {{ site.articles | size }} 个，约占总数的 {{ site.p | concat: site.answers | concat: site.articles | size | times: 100.0 | divided_by: total | round: 2 }}% （按总数为 {{ total }} 个计算）。 
+-->
+{% endcomment %}
+
 ## 镜像
 
 ### IPFS
