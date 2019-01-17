@@ -1,0 +1,94 @@
+---
+layout: default
+---
+
+{% include get_baseurl.html %}
+
+{% include translate_link.html %}
+
+<div class="row">
+    <div class="col-xs-12 col-md-9">
+        <div id="post-details">
+            <span>
+                <div class="post-topic-detail-title" style="height: auto;min-height: 50px;">
+                    <h3>
+                        <i class="fa fa-newspaper-o" style="margin-top:5px;"></i>
+                        新闻话题
+                    </h3>
+                </div>
+
+                <div class="post-body-wrap post-body 正常 clearfix" style="margin-top: 5px;border-bottom: none;">
+
+                    <div class="post-title title" style="font-size: 19px !important; padding: 5px;">
+                        <span itemprop="name">{{ page.title }}</span>
+                    </div>
+
+                    <div>
+                        <div class="content post-content" style="margin-bottom: 2px;">
+
+                            <div class="post-mod-agree">
+                                <i class="fa fa-star-o" style="font-size: 16px;margin-right: 0.5em;position: relative;top: 0.5px;color: #bcbcbc;"></i>
+                                {{ page.upvote | default: 0 }}人赞过
+                            </div>
+
+                            <div class="post-list-content">
+                                <div class="post-text-wrap post-text-wrap-detail">
+                                    <div class="post-text post-text-detail-column">
+                                        {{ content }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="post-action" style="padding-bottom: 20px;">
+
+                                    <div class="post-action-time">
+                                        <span class="userlink muted btn-gray">
+                                            <span class="btn-gray">
+                                                {{ page.date | date: "%Y-%m-%d" }}
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <span class="vote upvote mark btn-action fa fa-thumbs-o-up" title="赞同">
+                                        <span class="vote-btn-text zhidao-font">赞
+                                            <span class="count-wrap">
+                                                <span class="mainpost-count" style="font-size: 13px;">
+                                                    {{ page.upvote | default: 0 }}
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="vote downvote tip btn-action fa fa-thumbs-o-down" title="不赞同">
+                                        <span class="count-wrap zhidao-font">
+                                            {{ page.downvote }}
+                                        </span>
+                                    </span>
+
+                                    <span class="label label-default view-comment">
+                                        <span class="mainpost-cmt-count">
+                                            {{ page.comments | size | default: 0 }}
+                                        </span>
+                                        条评论
+                                    </span>
+
+                                    <span tabindex="0" class="btn-action post-action-group" style="cursor:pointer;margin-left:10px;">
+                                        操作<span class="caret"></span>
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </span>
+
+        </div>
+    </div>
+
+    {% include sidebar.html %}
+
+</div>

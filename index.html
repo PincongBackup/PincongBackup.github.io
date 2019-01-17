@@ -68,7 +68,7 @@ layout: default
                 </div>
             </div>
 
-            {% assign allPosts = site.p | concat: site.articles | sort: "date" %}
+            {% assign allPosts = site.p | concat: site.articles | concat: site.news | sort: "date" %}
 
             {% for post in allPosts reversed %}
                 {% assign postURL = post.url | split: "/" %}
@@ -134,6 +134,8 @@ layout: default
                             <span class="label label-default view-comment" style="margin-left:10px;">
                                 {% if post.collection == "articles" %}
                                 &nbsp;专栏文章&nbsp;
+                                {% elsif post.collection == "news" %}
+                                &nbsp;新闻话题&nbsp;
                                 {% else %}
                                 &nbsp;{{ answersOfTheQuestion.size }}个回答&nbsp;
                                 {% endif %}

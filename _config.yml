@@ -51,6 +51,9 @@ collections:
   articles:
     output: true
     permalink: /p/:name/
+  news:
+    output: true
+    permalink: /p/:name/
 
 defaults:
   - scope:
@@ -63,6 +66,11 @@ defaults:
       type: articles
     values:
       layout: article
+  - scope:
+      path: ""
+      type: news
+    values:
+      layout: news
 
 #
 # !! You don't need to change any of the configuration flags below !!
