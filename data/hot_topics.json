@@ -4,18 +4,27 @@
 
 [
     {% for tag in sortedTags limit:3 %}
-        {% assign postsOfTheTag = "" | split: "," %}
+        {% assign questionsOfTheTag = "" | split: "," %}
         {% for post in site.p %}
             {% if post.tags contains tag %}
-                {% assign postsOfTheTag = postsOfTheTag | push: post %}
+                {% assign questionsOfTheTag = questionsOfTheTag | push: post %}
+            {% endif %}
+        {% endfor %}
+
+        {% assign articlesOfTheTag = "" | split: "," %}
+        {% for post in site.articles %}
+            {% if post.tags contains tag %}
+                {% assign articlesOfTheTag = articlesOfTheTag | push: post %}
             {% endif %}
         {% endfor %}
 
     {
         "name": {{ tag | jsonify }},
-        "size": {{ postsOfTheTag.size }},
+        "size": {{ questionsOfTheTag.size | plus: articlesOfTheTag.size }},
+        "question": {{ questionsOfTheTag.size }},
+        "article": {{ articlesOfTheTag.size }},
         "last_3_posts": [
-            {% for post in postsOfTheTag reversed limit:3 %}
+            {% for post in questionsOfTheTag reversed limit:3 %}
             {
                 "title": {{ post.title | jsonify }},
                 "url": {{ post.url | jsonify }}

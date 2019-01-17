@@ -1,8 +1,10 @@
 
 {% comment %}按对应文章数量从大到小的顺序排序集合中的标签{% endcomment %}
 
+{% assign allPosts = site.p | concat: site.articles | concat: site.news | sort: "date" | reverse %}
+
 {% comment %}获取所有标签{% endcomment %}
-{% assign allTags = site.p | map: 'tags' | join: ','  | split: ',' | uniq %}
+{% assign allTags = allPosts | map: 'tags' | join: ','  | split: ',' | uniq %}
 
 {% comment %}获取每个标签对应的文章数量{% endcomment %}
 {% assign sizes = "" | split: "," %}
@@ -10,7 +12,7 @@
 
     {% assign size = 0 %}
 
-    {% for post in site.p %}
+    {% for post in allPosts %}
         {% if post.tags contains tag %}
             {% assign size = size | plus: 1 %}
         {% endif %}
@@ -30,7 +32,7 @@
     {% for tag in allTags %}
         {% assign size = 0 %}
 
-        {% for post in site.p %}
+        {% for post in allPosts %}
             {% if post.tags contains tag %}
                 {% assign size = size | plus: 1 %}
             {% endif %}

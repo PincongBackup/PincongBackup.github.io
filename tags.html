@@ -8,11 +8,13 @@ permalink: tags.html
 
 {% include sort_tags.html %}
 
+{% assign allPosts = site.p | concat: site.articles | concat: site.news | sort: "date" %}
+
 {% assign postsOfTags = "" | split: "," %}
 {% for tag in sortedTags %}
     {% assign postsOfTheTag = "" | split: "," %}
 
-    {% for post in site.p %}
+    {% for post in allPosts %}
         {% if post.tags contains tag %}
             {% assign postsOfTheTag = postsOfTheTag | push: post %}
         {% endif %}
