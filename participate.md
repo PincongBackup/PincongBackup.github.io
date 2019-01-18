@@ -158,7 +158,7 @@ permalink: participate.html
 
 * [archive.fo (原 archive.is、archive.today)](http://archive.fo/)
 
-* [telegram 品葱搬运工](https://t.me/todayfreedom)
+* [telegram 品葱搬运工](https://t.me/pincongessence)
 
 * [新品葱的品葱备份相关话题](https://pincong.rocks/topic/品葱备份)
 
