@@ -1,0 +1,33 @@
+---
+---
+
+{% assign userPostsGroups = site.answers | sort: "user_id" | group_by: "user_id" %}
+
+{% assign users = "" | split: "" %}
+{% for group in userPostsGroups %}
+    {% assign posts = group.items | sort: "date" | reverse %}
+    {% assign post = posts[0] %}
+    {% assign user = "" | split: "" | push: post.user_id | push: post.user_name | push: post.user_intro | push: post.user_avatar %}
+    {% assign users = users | push: user %}
+{% endfor %}
+
+[
+    {% for u in users %}
+        {
+            "user_id": "{{ u[0] }}",
+            "user_name": {{ u[1] | jsonify }},
+            "user_intro": {{ u[2] | jsonify }},
+            "user_avatar": {{ u[3] | jsonify }},
+            "answers": [
+                {% assign userAnswers = userPostsGroups | where: "name", u[0] | first %}
+                {% for answer in userAnswers.items %}
+                    {% assign answerURL = answer.url | split: "/" %}
+                    {
+                        "question_id": {{ answerURL[2] | jsonify }},
+                        "answer_id": {{ answerURL[3] | jsonify }}
+                    }{% if forloop.last != true %},{% endif %}
+                {% endfor %}
+            ]
+        }{% if forloop.last != true %},{% endif %}
+    {% endfor %}
+]
