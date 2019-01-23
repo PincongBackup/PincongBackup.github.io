@@ -1134,6 +1134,12 @@ mark {
 #navbar .mid {
     height: inherit;
     width: 5%;
+
+    &.nav-item {
+        @media (max-width: 350px) {
+            display: none;
+        }
+    }
 }
 
 #navbar .nav-item a {
