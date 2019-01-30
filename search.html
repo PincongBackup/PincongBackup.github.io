@@ -1,0 +1,66 @@
+---
+layout: page
+title: 搜索
+permalink: search.html
+---
+
+{% include get_baseurl.html %}
+
+<input type="text" id="search-input" placeholder="搜索..." style="margin: 0px 0px 20px 0px; height: 40px; width: 100%;">
+
+<div id="post-list">
+    <div id="results-container">
+
+    </div>
+</div>
+
+<style>
+    #post-list .title-box>.post-title {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+</style>
+
+<script src="{{ baseURL }}/static/lib/simple-jekyll-search.min.js"></script>
+<script>
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: "{{ baseURL }}/data/search.json",
+        noResultsText: "<span style=\"font-size: 18.2px;\">未找到结果</span>",
+        limit: 13,
+        templateMiddleware: function (prop, value) {
+            if (prop === "tags") {
+                if (value) {
+                    var tags = value.split(", ")
+                    return tags.map(function (tag) {
+                        return "<a class=\"tag\" href=\"{{ baseURL }}/tags.html#" + tag + "\">" + tag + "</a>"
+                    }).join("\n")
+                } else {
+                    return ""
+                }
+            }
+        },
+        searchResultTemplate:
+            "<div class=\"post-body-wrap post-body-wrap-list post-row\" style=\"padding: 10px 5px 10px 5px;\">\n" +
+            "    <div class=\"title-box clearfix\">\n" +
+            "        <div class=\"post-title title\">\n" +
+            "            <a target=\"_blank\" href=\"{{ baseURL }}{url}\">\n" +
+            "                {title}\n" +
+            "            </a>\n" +
+            "        </div>\n" +
+            "        <div class=\"tags tag-pad\" style=\"margin:3px 0 3px 10px;\">\n" +
+            "            {tags}\n" +
+            "        </div>\n" +
+            "        <div class=\"post-action\" style=\"padding:0;margin-top:10px;\">\n" +
+            "            <span class=\"userlink muted btn-gray\">\n" +
+            "                <span class=\"btn-gray\">\n" +
+            "                    {date}\n" +
+            "                </span>\n" +
+            "            </span>\n" +
+            "        </div>\n" +
+            "    </div>\n" +
+            "</div>"
+    })
+</script>

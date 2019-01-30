@@ -13,7 +13,7 @@
                 </div>
 
                 {% for nav in site.navigation %}
-                    <div class="col-sm-1 col-xs-1 mid nav-item" style="top: -2px; width: 52px;">
+                    <div class="col-sm-1 col-xs-1 mid nav-item" style="top: -2px;">
                         {% if nav.url contains 'http://' or nav.url contains 'https://' %}
                             <a href="{{ nav.url }}" style="position: relative; top: -5px;">
                                 {{ nav.name }}

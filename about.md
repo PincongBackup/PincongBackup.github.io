@@ -14,7 +14,7 @@ permalink: about.html
 
 品葱备份计划使用 GitHub 开放平台托管，网站在 Github 和 IPFS 上同步搭建，便于墙内网络传播。
 
-截至 {{ site.time | date: "%Y年%m月%d日" }}，本项目已成功备份问题 {{ site.p | size }} 个，回答 {{ site.answers | size }} 个，专栏文章 {{ site.articles | size }} 个，新闻话题 {{ site.news | size }} 个。
+截至 {{ site.time | date: "%Y年%m月%d日" }}，本项目已成功备份问题 {{ site.p | size }} 个，回答 {{ site.answers | size }} 个，专栏文章 {{ site.articles | size }} 篇，新闻话题 {{ site.news | size }} 个。
 
 ## 镜像
 
@@ -29,3 +29,8 @@ permalink: about.html
 ## 联系我们
 
 请使用 [Github Issues](https://github.com/PincongBackup/PincongBackup.github.io/issues) 公开交流
+
+
+<style>
+a { word-wrap: break-word; }
+</style>

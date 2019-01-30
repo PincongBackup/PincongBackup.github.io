@@ -1133,7 +1133,11 @@ mark {
 
 #navbar .mid {
     height: inherit;
-    width: 5%;
+    width: 52px;
+
+    @media (max-width: 400px) {
+        width: 42px;
+    }
 
     &.nav-item {
         @media (max-width: 350px) {

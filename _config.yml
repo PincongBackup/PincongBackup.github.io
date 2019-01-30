@@ -25,6 +25,8 @@ navigation:
     url: /atom.xml
   - name: 关于
     url: /about.html
+  - name: 搜索
+    url: /search.html
 
 # Pagination
 # paginate: 15

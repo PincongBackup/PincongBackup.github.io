@@ -1,0 +1,13 @@
+---
+---
+{% assign allPosts = site.p | concat: site.articles | concat: site.news | sort: "date" | reverse %}
+[
+  {% for post in allPosts %}
+    {
+      "title"    : "{{ post.title | escape }}",
+      "tags"     : "{{ post.tags | join: ', ' }}",
+      "url"      : "{{ post.url }}",
+      "date"     : "{{ post.date | date: "%Y-%m-%d" }}"
+    } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
