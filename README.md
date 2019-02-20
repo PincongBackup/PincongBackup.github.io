@@ -62,6 +62,7 @@ jekyll serve
 ### 贡献者
 
 * @PincongBot
+* @3abc
 
 ## 许可证
 
